@@ -39,7 +39,7 @@ var api = new HueApi(config.HUE_HOST, config.HUE_USER),
           "body"   : {
               "on": true,
               "bri": 255,
-              "ct": 46000,
+              "hue": 46000,
               "transitiontime": TRANSITIONTIME
           }
       }
