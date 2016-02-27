@@ -1,0 +1,8 @@
+[Unit]
+Description=hue forecast service
+
+[Service]
+TimeoutSec=0
+EnvironmentFile=/home/pi/hue-forecast/.env
+
+ExecStart=/usr/local/bin/node /home/pi/hue-forecast/index.js
