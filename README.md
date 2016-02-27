@@ -35,6 +35,7 @@ How to install node >=4 on a Raspberry pi:
 1. `cd hue-forecast`
 1. `npm install`
 1. create your environment file `/home/pi/hue-forecast/.env`
+1. run `node src/hue-prepare.js` once to get values for `HUE_SCHEDULE_RAIN` and `HUE_SCHEDULE_GOOD`, update your `.env` file
 1. `sudo cp systemd/* /lib/systemd/system/`
 1. `sudo systemctl daemon-reload`
 1. `sudo systemctl enable hue-forecast.timer`
