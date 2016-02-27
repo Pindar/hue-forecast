@@ -1,24 +1,14 @@
-var nconf = require('nconf');
-var pkg = require('./package.json');
-var config = nconf
-  .env()
-  .argv()
-  .defaults(pkg.appConfig)
-  .get();
+var forecast = require('./src/forecast');
+var hue = require('./src/hue');
+var utils = require ('./src/utils');
 
-var Forecast = require('forecast.io-bluebird');
 
-var forecast = new Forecast({
-    key: config.FORECAST_API_KEY,
-    timeout: 2500
-});
+forecast.getAvgRainProbability().
+  then(function (rainProbabilityNextHours) {
 
-forecast.fetch(config.FORECAST_LATITUDE, config.FORECAST_LONGITUDE)
-.then(function(result) {
-    console.dir(result);
-
-    // TODO: extract weather condition, calculate color value and make hue update
-})
-.catch(function(error) {
-    console.error(error);
-});
+    if (rainProbabilityNextHours > 0.5) {
+      hue.enableRainSchedule();
+    } else {
+      hue.enableGoodSchedule();
+    }
+  });
