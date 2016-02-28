@@ -6,7 +6,7 @@ var config = require('./utils').config,
 
 // Please adapt these values to whatever you prefer
 const LIGHT_NUMBER = 5,
-      WAKE_UP_TIME = "W124/T05:45:00",
+      WAKE_UP_TIME = "W124/T06:45:00",
       TRANSITIONTIME = 9000; // 15 Minutes
 
 var displayResults = function(result) {
