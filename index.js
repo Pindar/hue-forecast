@@ -6,7 +6,7 @@ var utils = require ('./src/utils');
 forecast.getAvgRainProbability().
   then(function (rainProbabilityNextHours) {
 
-    if (rainProbabilityNextHours > 0.5) {
+    if (rainProbabilityNextHours > 0.45) {
       hue.enableRainSchedule();
     } else {
       hue.enableGoodSchedule();
