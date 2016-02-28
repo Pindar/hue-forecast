@@ -14,6 +14,9 @@ Sets your hue to a light color that indicates the weather forecast for a given l
 | FORECAST_LATITUDE  | latitude of the location you'd like to check the weather for       |
 | FORECAST_LONGITUDE | longitude of the location you'd like to check the weather for      |
 
+## Development
+
+Run on your computer with `export $(cat .env | xargs) && npm start` in case you have all environment variables defined in a .env file.
 
 ## Installation
 
