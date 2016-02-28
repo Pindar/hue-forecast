@@ -17,7 +17,7 @@
     "bluebird": "^3.3.3",
     "forecast.io-bluebird": "0.0.1",
     "nconf": "^0.8.4",
-    "node-hue-api": "Pindar/node-hue-api.git#schedule-fix"
+    "node-hue-api": "^2.2.0"
   },
   "appConfig": {}
 }
