@@ -9,30 +9,49 @@ var displayResults = function(result) {
 };
 
 var api = new HueApi(config.HUE_HOST, config.HUE_USER),
-    disableSchedule = {
-      "status": "disabled"
-    },
-    enableSchedule = {
-      "status": "enabled"
+    schedule = {
+      rainy: {
+        "localtime": config.WAKE_UP_TIME,
+        "command": {
+            "address": "/api/" + config.HUE_USER + "/lights/" + config.LIGHT_NUMBER + "/state",
+            "method" : "PUT",
+            "body"   : {
+                "on": true,
+                "bri": 255,
+                "hue": 46000,
+                "transitiontime": config.TRANSITIONTIME
+            }
+        }
+      },
+      sunny: {
+        "localtime": config.WAKE_UP_TIME,
+        "command": {
+            "address": "/api/" + config.HUE_USER + "/lights/" + config.LIGHT_NUMBER + "/state",
+            "method" : "PUT",
+            "body"   : {
+                "on": true,
+                "bri": 255,
+                "hue": 14500,
+                "transitiontime": config.TRANSITIONTIME
+            }
+        }
+      }
+
     };
 
 
+function updateSchedule(type) {
+  api.updateSchedule(config.HUE_SCHEDULE_ID, schedule[type])
+  .then(displayResults)
+  .done();
+}
+
 function enableRainSchedule() {
-  api.updateSchedule(config.HUE_SCHEDULE_RAIN, enableSchedule)
-      .then(displayResults)
-      .done();
-  api.updateSchedule(config.HUE_SCHEDULE_GOOD, disableSchedule)
-      .then(displayResults)
-      .done();
+  updateSchedule('rainy');
 }
 
 function enableGoodSchedule() {
-  api.updateSchedule(config.HUE_SCHEDULE_RAIN, disableSchedule)
-      .then(displayResults)
-      .done();
-  api.updateSchedule(config.HUE_SCHEDULE_GOOD, enableSchedule)
-      .then(displayResults)
-      .done();
+  updateSchedule('sunny');
 }
 
 module.exports = {
