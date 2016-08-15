@@ -8,26 +8,17 @@ var forecast = new Forecast({
 });
 
 
-function getAvgRainProbability() {
+function isItRainingToday() {
   return forecast.fetch(config.FORECAST_LATITUDE, config.FORECAST_LONGITUDE)
     .then(function(result) {
 
-        var avgRainProb = calculateAvgRainProbability(result.hourly);
-
-        console.log('avg rain probability: ', avgRainProb);
-
-        return Promise.resolve(avgRainProb);
+        return Promise.resolve(result.hourly.icon === 'rain'||
+          result.hourly.icon === 'snow' ||
+          result.hourly.icon === 'sleet'
+        );
     });
 }
 
-function calculateAvgRainProbability(hourly) {
-  var sum = hourly.data.reduce(function(previousValue, currentValue) {
-    return previousValue + currentValue.precipProbability;
-  }, 0);
-
-  return sum / hourly.data.length;
-}
-
 module.exports = {
-  getAvgRainProbability: getAvgRainProbability
+  isItRainingToday: isItRainingToday
 };

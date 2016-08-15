@@ -41,6 +41,7 @@ var api = new HueApi(config.HUE_HOST, config.HUE_USER),
 
 
 function updateSchedule(type) {
+  console.log('updateSchedule: ' + type);
   api.updateSchedule(config.HUE_SCHEDULE_ID, schedule[type])
   .then(displayResults)
   .done();
