@@ -25,6 +25,8 @@
   "appConfig": {
     "TRANSITIONTIME": 9000,
     "WAKE_UP_TIME": "W124/T06:45:00",
-    "LIGHT_NUMBER": 5
+    "LIGHT_NUMBER": 5,
+    "START_TIME": 6,
+    "END_TIME": 19
   }
 }

@@ -17,8 +17,8 @@ function isItRainingDuringTheDay() {
           slice(0, 24). // next 24 hours
           filter(item => {
             var seconds = item.time * 1000;
-            var hour = new Date(seconds).getHours();
-            return hour > 8 && hour < 21; // only between 8am and 9pm
+            var hour = new Date(seconds).getUTCHours();
+            return hour > config.START_TIME && hour < config.END_TIME;
           }).filter(relevantHours => {
             return relevantHours.icon === 'rain'||
               relevantHours.icon === 'snow' ||
