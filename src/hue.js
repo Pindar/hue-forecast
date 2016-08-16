@@ -1,5 +1,6 @@
+'use strict';
+
 var config = require('./utils').config,
-    Promise = require("bluebird"),
     hue = require("node-hue-api"),
     HueApi = hue.HueApi,
     lightState = hue.lightState;
