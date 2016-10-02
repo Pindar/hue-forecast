@@ -14,13 +14,12 @@
   "author": "Simon Dittlmann",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.3.3",
-    "forecast.io-bluebird": "0.0.1",
     "nconf": "^0.8.4",
+    "node-fetch": "^1.6.3",
     "node-hue-api": "^2.2.0"
   },
-  "engines" : {
-    "node" : ">=4.0.0"
+  "engines": {
+    "node": ">=4.0.0"
   },
   "appConfig": {
     "TRANSITIONTIME": 9000,

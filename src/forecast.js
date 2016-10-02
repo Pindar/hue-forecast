@@ -1,18 +1,13 @@
 'use strict';
 
 var config = require('./utils').config;
-var Forecast = require('forecast.io-bluebird');
-
-var forecast = new Forecast({
-    key: config.FORECAST_API_KEY,
-    timeout: 2500
-});
-
+var fetch = require('node-fetch');
 
 function isItRainingDuringTheDay() {
-  return forecast.fetch(config.FORECAST_LATITUDE, config.FORECAST_LONGITUDE)
-    .then(function(result) {
-
+  return fetch(`https://api.darksky.net/forecast/${config.FORECAST_API_KEY}/${config.FORECAST_LATITUDE},${config.FORECAST_LONGITUDE}`)
+    .then(res => {
+        return res.json();
+    }).then(result => {
         var isItRainingDuringTheDay = result.hourly.data.
           slice(0, 24). // next 24 hours
           filter(item => {
