@@ -20,6 +20,7 @@ var api = new HueApi(config.HUE_HOST, config.HUE_USER),
                 "on": true,
                 "bri": 255,
                 "hue": 46000,
+                "sat": 254,
                 "transitiontime": config.TRANSITIONTIME
             }
         }
@@ -33,6 +34,7 @@ var api = new HueApi(config.HUE_HOST, config.HUE_USER),
                 "on": true,
                 "bri": 255,
                 "hue": 14500,
+                "sat": 254,
                 "transitiontime": config.TRANSITIONTIME
             }
         }
